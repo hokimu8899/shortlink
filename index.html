@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hokimu Link</title>
+</head>
+<body style="text-align:center; padding:50px;">
+  <h2>Cut your links shorter</h2>
+  <input id="url" style="width:60%; padding:10px;" placeholder="Paste your long URL">
+  <br><br>
+  <button onclick="go()">Shorten</button>
+  <p id="hasil"></p>
+
+  <script>
+    function go() {
+      let u = document.getElementById("url").value;
+      let s = window.location.origin + "/" + Math.random().toString(36).substring(7);
+      document.getElementById("hasil").innerHTML = s;
+    }
+  </script>
+</body>
+</html>
