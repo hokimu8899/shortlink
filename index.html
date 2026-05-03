@@ -1,21 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <title>Hokimu Link</title>
-</head>
-<body style="text-align:center; padding:50px;">
-  <h2>Cut your links shorter</h2>
-  <input id="url" style="width:60%; padding:10px;" placeholder="Paste your long URL">
-  <br><br>
-  <button onclick="go()">Shorten</button>
-  <p id="hasil"></p>
-
-  <script>
-    function go() {
-      let u = document.getElementById("url").value;
-      let s = window.location.origin + "/" + Math.random().toString(36).substring(7);
-      document.getElementById("hasil").innerHTML = s;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hokimu Shortlink</title>
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      background:#f4f7fb;
+      color:#16324f;
     }
-  </script>
+    header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:30px 70px;
+    }
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+    }
+    .nav button{
+      border:0;
+      padding:14px 28px;
+      border-radius:22px;
+      margin-left:15px;
+      color:white;
+      font-weight:bold;
+      cursor:pointer;
+    }
+    .admin{background:linear-gradient(90deg,#7b2cff,#b100ff);}
+    .setting{background:linear-gradient(90deg,#2d8cff,#3aa7ff);}
+    main{
+      text-align:center;
+      padding-top:70px;
+    }
+    h1{
+      font-size:36px;
+      font-weight:400;
+    }
+    .box{
+      margin:45px auto 20px;
+      width:60%;
+      background:white;
+      border-radius:40px;
+      box-shadow:0 15px 35px rgba(0,0,0,.08);
+      display:flex;
+      overflow:hidden;
+    }
+    input{
+      flex:1;
+      border:0;
+      padding:25px 30px;
+      font-size:20px;
+      outline:none;
+    }
+    button.go{
+      width:90px;
+      border:0;
+      background:white;
+      font-size:34px;
+      color:#999;
+      cursor:pointer;
+    }
+    .adv{
+      width:60%;
+      margin:auto;
+      text-align:left;
+      font-size:18px;
+    }
+    #hasil{
+      margin-top:25px;
+      font-size:20px;
+      color:#0077ff;
+      font-weight:bold;
+    }
+    .recent{
+      margin:130px 70px 0;
+      text-align:left;
+    }
+    .card{
+      background:white;
+      height:120px;
+      border-radius:15px;
+      box-shadow:0 10px 25px rgba(0,0,0,.05);
+      padding:25px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🔹 Hokimu</div>
+  <div>GitHub</div>
+  <div class="nav">
+    <button class="admin">🛡 Admin</button>
+    <button class="setting">⚙ Settings</button>
+  </div>
+</header>
+
+<main>
+  <h1>Cut your links shorter.</h1>
+
+  <div class="box">
+    <input id="url" placeholder="Paste your long URL" />
+    <button class="go" onclick="shorten()">➤</button>
+  </div>
+
+  <div class="adv">
+    <input type="checkbox" /> Show advanced options
+  </div>
+
+  <p id="hasil"></p>
+</main>
+
+<section class="recent">
+  <h2>Recent shortened links.</h2>
+  <div class="card">
+    <input placeholder="Search..." style="padding:15px;width:220px;border:0;background:#f5f7fa;border-radius:5px;">
+  </div>
+</section>
+
+<script>
+function shorten(){
+  let url = document.getElementById("url").value;
+  if(!url){
+    alert("Masukkan link dulu");
+    return;
+  }
+  let code = Math.random().toString(36).substring(2,8);
+  document.getElementById("hasil").innerHTML =
+    "Short link: " + window.location.origin + "/" + code;
+}
+</script>
+
 </body>
 </html>
